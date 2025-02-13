@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    margin: 0 auto;
+}
+
+table{
+    border-collapse: collapse;
+    width: 60%;
+}
+
+th,td{
+    padding: 5px;
+    text-align: left;
+    border: 1px solid black;
+}
+
+
+/* Habit Input */
+#habit-input-box{
+    margin-top: 10%;
+}
