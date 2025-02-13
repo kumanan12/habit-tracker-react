@@ -7,10 +7,13 @@ export default function HabitTable({ newHabits }){
         <>
         <div className="container">
         <table>
+            <thead>
             <tr>
                 <th>Habit</th>
                 <th>Date</th>
             </tr>
+            </thead>
+            <tbody>
             {
                 habitsToBeAdded.map( (habit) => (
                     <tr key={habit.id}>
@@ -19,6 +22,7 @@ export default function HabitTable({ newHabits }){
                     </tr>
                 ) )
             }
+            </tbody>
         </table>
         </div>
         </>
