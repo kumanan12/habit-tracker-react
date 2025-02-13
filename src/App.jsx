@@ -1,12 +1,33 @@
-import HabitTable from './HabitTable'
-import HabitInput from './HabitInput'
+import HabitTable from "./HabitTable";
+import HabitInput from "./HabitInput";
+import { useState } from "react";
 
+export default function App() {
+  const [habits, setHabits] = useState([]);
+  const [id, setId] = useState(1);
 
-export default function App(){
- return(
+  function createHabit(habit) {
+    let newHabit = {
+      id: id,
+      name: habit,
+      date: null,
+    };
+    setId(id + 1);
+    return newHabit
+  }
+
+  function onHabitAddedHandler(addedHabit) {
+    let newHabit = createHabit(addedHabit);
+    setHabits((prevHabits) => [...prevHabits, newHabit] );
+    console.log(habits);
+    
+    
+  }
+
+  return (
     <>
-    <HabitTable />
-    <HabitInput />
+      <HabitTable />
+      <HabitInput onHabitAdded={onHabitAddedHandler} />
     </>
- );
+  );
 }

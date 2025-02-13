@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function HabitInput() {
+export default function HabitInput({ onHabitAdded }) {
   const [newHabit, setNewHabit] = useState("");
 
   function onInputChangeHandler(event) {
@@ -10,6 +10,7 @@ export default function HabitInput() {
 
   function onAddHandler() {
     console.log(newHabit);
+    onHabitAdded(newHabit);
     setNewHabit("");
   }
 
