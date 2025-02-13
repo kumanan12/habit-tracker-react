@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function HabitInput({ onHabitAdded }) {
+export default function HabitInput({ onHabitAdded, onHabitSaved }) {
   const [newHabit, setNewHabit] = useState("");
 
   function onInputChangeHandler(event) {
@@ -21,6 +21,10 @@ export default function HabitInput({ onHabitAdded }) {
 
   }
 
+  function onSaveHandler(){
+    onHabitSaved();
+  }
+
   return (
     <>
       <div id="habit-input-box">
@@ -37,7 +41,7 @@ export default function HabitInput({ onHabitAdded }) {
         <button id="add-habit" onClick={onAddHandler}>
           Add
         </button>
-        <button id="save-habit">Save</button>
+        <button id="save-habit" onClick={onSaveHandler}>Save</button>
         <button id="Load-habit">Load</button>
       </div>
     </>

@@ -1,10 +1,33 @@
 import HabitTable from "./HabitTable";
 import HabitInput from "./HabitInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
   const [habits, setHabits] = useState([]);
   const [id, setId] = useState(1);
+
+
+
+
+  function loadFromLocalStorage(){
+    let habitsJSON = window.localStorage.getItem('habits');
+    if(habitsJSON){
+      let habitsString = JSON.parse(habitsJSON);
+      setHabits(habitsString);
+    }
+  }
+
+  function storeInLocalStorage(){
+    let habitsString = JSON.stringify(habits);
+    window.localStorage.setItem('habits', habitsString);
+  }
+
+
+  useEffect( () => {
+    loadFromLocalStorage();
+  }, [])
+
+
 
   function createHabit(habit) {
     let newHabit = {
@@ -24,11 +47,16 @@ export default function App() {
     
   }
 
+  function onHabitSavedHandler(){
+    storeInLocalStorage();
+    alert("Habits saved successfully!");
+  }
+
   return (
     <>
     <div id="container">
       <HabitTable newHabits={habits} />
-      <HabitInput onHabitAdded={onHabitAddedHandler} />
+      <HabitInput onHabitAdded={onHabitAddedHandler} onHabitSaved={onHabitSavedHandler} />
       </div>
     </>
   );
