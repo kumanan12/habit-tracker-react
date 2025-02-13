@@ -10,7 +10,7 @@ export default function App() {
     let newHabit = {
       id: id,
       name: habit,
-      date: null,
+      date: new Date().toString(),
     };
     setId(id + 1);
     return newHabit
@@ -26,7 +26,7 @@ export default function App() {
 
   return (
     <>
-      <HabitTable />
+      <HabitTable newHabits={habits} />
       <HabitInput onHabitAdded={onHabitAddedHandler} />
     </>
   );

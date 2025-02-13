@@ -1,4 +1,8 @@
-export default function HabitTable(){
+export default function HabitTable({ newHabits }){
+
+    let habitsToBeAdded = newHabits;
+
+
     return(
         <>
         <div className="container">
@@ -7,10 +11,14 @@ export default function HabitTable(){
                 <th>Habit</th>
                 <th>Date</th>
             </tr>
-            <tr>
-                <td>data</td>
-                <td>data</td>
-            </tr>
+            {
+                habitsToBeAdded.map( (habit) => (
+                    <tr key={habit.id}>
+                        <td>{habit.name}</td>
+                        <td>{habit.date}</td>
+                    </tr>
+                ) )
+            }
         </table>
         </div>
         </>
