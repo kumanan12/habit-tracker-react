@@ -1,22 +1,41 @@
+import { useState } from "react";
+
 export default function HabitInput() {
+  const [newHabit, setNewHabit] = useState("");
 
-    function onInputChangeHandler(event){
-        let newHabit = event.target.value;
-        console.log(newHabit);
-        
-        
+  function onInputChangeHandler(event) {
+    let userInput = event.target.value;
+    setNewHabit(userInput);
+  }
+
+  function onAddHandler() {
+    console.log(newHabit);
+    setNewHabit("");
+  }
+
+  function onKeyEnter(key){
+    if (key.code === 'Enter') {
+        onAddHandler();
     }
 
-    function onAddHandler(){
-        console.log('add button clicked'); 
-    }
+  }
 
   return (
     <>
       <div id="habit-input-box">
         <label htmlFor="habit-input">Habit: </label>
-        <input type="text" id="habit-input" name="habit-input" placeholder="Add a habit..." onChange={onInputChangeHandler}/>
-        <button id="add-habit" onClick={onAddHandler}>Add</button>
+        <input
+          type="text"
+          id="habit-input"
+          name="habit-input"
+          placeholder="Add a habit..."
+          value={newHabit}
+          onChange={onInputChangeHandler}
+          onKeyDown={onKeyEnter}
+        />
+        <button id="add-habit" onClick={onAddHandler}>
+          Add
+        </button>
         <button id="save-habit">Save</button>
         <button id="Load-habit">Load</button>
       </div>
