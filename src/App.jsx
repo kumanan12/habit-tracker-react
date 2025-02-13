@@ -26,8 +26,10 @@ export default function App() {
 
   return (
     <>
+    <div id="container">
       <HabitTable newHabits={habits} />
       <HabitInput onHabitAdded={onHabitAddedHandler} />
+      </div>
     </>
   );
 }

@@ -1,30 +1,29 @@
-export default function HabitTable({ newHabits }){
+export default function HabitTable({ newHabits }) {
+  let habitsToBeAdded = newHabits;
 
-    let habitsToBeAdded = newHabits;
-
-
-    return(
-        <>
-        <div className="container">
+  return (
+    <>
+      <div className="table-box">
         <table>
-            <thead>
+
+          <thead>
             <tr>
-                <th>Habit</th>
-                <th>Date</th>
+              <th>Habit</th>
+              <th>Date</th>
             </tr>
-            </thead>
-            <tbody>
-            {
-                habitsToBeAdded.map( (habit) => (
-                    <tr key={habit.id}>
-                        <td>{habit.name}</td>
-                        <td>{habit.date}</td>
-                    </tr>
-                ) )
-            }
-            </tbody>
+          </thead>
+
+          <tbody>
+            {habitsToBeAdded.map((habit) => (
+              <tr key={habit.id}>
+                <td>{habit.name}</td>
+                <td>{habit.date}</td>
+              </tr>
+            ))}
+          </tbody>
+
         </table>
-        </div>
-        </>
-    );
+      </div>
+    </>
+  );
 }
