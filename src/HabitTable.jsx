@@ -17,7 +17,7 @@ export default function HabitTable({ newHabits }) {
             {habitsToBeAdded.map((habit) => (
               <tr key={habit.id}>
                 <td>{habit.name}</td>
-                <td>{habit.date}</td>
+                <td className="table-date">{habit.date}</td>
               </tr>
             ))}
           </tbody>
