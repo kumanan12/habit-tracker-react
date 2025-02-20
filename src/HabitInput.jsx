@@ -24,7 +24,7 @@ export default function HabitInput({ onHabitAdded }) {
   return (
     <>
       <div id="habit-input-box">
-        <label htmlFor="habit-input">Habit: </label>
+        <label htmlFor="habit-input">Habit:</label>
         <input
           type="text"
           id="habit-input"
@@ -33,6 +33,7 @@ export default function HabitInput({ onHabitAdded }) {
           value={newHabit}
           onChange={onInputChangeHandler}
           onKeyDown={onKeyEnter}
+          autoFocus
         />
         <button id="add-habit" onClick={onAddHandler}>
           Add
