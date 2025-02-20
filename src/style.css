@@ -1,19 +1,16 @@
 :root {
-  /* --black: #171321;
-    --dkblue: #0d314b;
-    --plum: #4b0d49;
-    --hotmag: #ff17e4;
-    --magenta: #e310cb;
-    --aqua: #86fbfb;
-    --white: #f7f8fa;
-    --font-size: 1.3rem;
-    --mono: "Oxygen mono", monospace;
-    --sans: Oxygen, sans-serif; */
+
     --body: #fff8b9;
   --table-header: #ff9757;
   --table-body: #ffdd9a;
   --buttons: #ff6200;
   --input-box: #ffa557;
+
+  --scrollbar-track: #ffac88b4 ;
+  --scrollbar-thumb: #ff6e30;
+  --scrollbar-thumb-hover: #FF4C00;
+
+
   --mono: "Oxygen mono", monospace;
   --sans: Oxygen, sans-serif;
 }
@@ -51,12 +48,33 @@ body {
 .table-box {
   overflow-y: auto;
   /*  flex-grow: 1; */
+
+  
+}
+
+.table-box::-webkit-scrollbar{
+    width: 7px;
+}
+
+.table-box::-webkit-scrollbar-track{
+    background-color: var(--scrollbar-track);
+}
+
+.table-box::-webkit-scrollbar-thumb{
+    background-color: var(--scrollbar-thumb);
+    border-radius: 5px;
+}
+
+.table-box::-webkit-scrollbar-thumb:hover{
+    background-color: var(--scrollbar-thumb-hover);
 }
 
 table {
   border-collapse: collapse;
   width: 100%;
   table-layout: fixed;
+
+  
 }
 
 thead {
@@ -73,6 +91,8 @@ thead {
 tbody{
     font-family: var(--mono);
     font-size: 10pt;
+    overflow-y: auto;
+
 }
 
 .table-date{
