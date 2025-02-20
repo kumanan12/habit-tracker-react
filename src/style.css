@@ -1,3 +1,24 @@
+:root {
+    /* --black: #171321;
+    --dkblue: #0d314b;
+    --plum: #4b0d49;
+    --hotmag: #ff17e4;
+    --magenta: #e310cb;
+    --aqua: #86fbfb;
+    --white: #f7f8fa;
+    --font-size: 1.3rem;
+    --mono: "Oxygen mono", monospace;
+    --sans: Oxygen, sans-serif; */
+
+    --table-header: #FF9757;
+    --table-body: #FFDD9A;
+    --buttons: #FF6200;
+    --input-box: #FFA557;
+
+  } #FF9757
+
+
+
 *{
     box-sizing: border-box;
 }
@@ -20,7 +41,7 @@ body{
     height: 60vh;
     border: 3px solid black;
 
-    background-color: aliceblue;
+    background-color: var(--table-body);
     font-size: 8pt;
     overflow: hidden;
     position: relative;
@@ -40,9 +61,10 @@ table{
 thead{
     position: sticky;
 /*     overflow: hidden; */
-    background-color: rgb(28, 119, 255);
+    background-color: var(--table-header);
     top: 0;
     z-index: 10;
+    padding: 20px;
 
 }
 
@@ -59,7 +81,7 @@ td{
 
 /* Habit Input */
 #habit-input-box{
-    background-color: rgb(0, 204, 255);
+    background-color: var(--input-box);
     padding: 10px;
     position:relative;
     bottom: 0;
@@ -81,4 +103,6 @@ td{
     margin-left: 10px;
     border-radius: 5px;
     padding: 5px 7px;
+    color: white;
+    background-color: var(--buttons);
 }
