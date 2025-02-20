@@ -34,6 +34,11 @@ export default function App() {
   }
 
   function onHabitAddedHandler(addedHabit) {
+
+    if(!addedHabit.trim()){
+      return;
+    }
+
     let newHabit = createHabit(addedHabit);
     setHabits((prevHabits) => [...prevHabits, newHabit]);
     console.log(habits);
