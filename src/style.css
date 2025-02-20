@@ -1,6 +1,6 @@
 :root {
 
-    --body: #fff8b9;
+    --body: #fffacb;
   --table-header: #ff9757;
   --table-body: #ffdd9a;
   --buttons: #ff6200;
@@ -142,6 +142,7 @@ td {
   border-radius: 3px;
   margin-left: 5px;
   padding: 3px;
+  background-color: #fffdeb;
 }
 
 #habit-input-box > button {
