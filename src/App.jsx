@@ -1,23 +1,16 @@
 import HabitTable from "./HabitTable";
 import HabitInput from "./HabitInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
   const [habits, setHabits] = useState([]);
   const [id, setId] = useState(1);
 
-  function loadFromLocalStorage() {
-    let habitsJSON = window.localStorage.getItem("habits");
-    if (habitsJSON) {
-      let habitsString = JSON.parse(habitsJSON);
-      setHabits(habitsString);
-    }
-  }
-
-  function storeInLocalStorage() {
-    let habitsString = JSON.stringify(habits);
-    window.localStorage.setItem("habits", habitsString);
-  }
+  useEffect( () => {
+    fetch('http://localhost:7000/habits')
+    .then(res => res.json())
+    .then(data => setHabits(data))
+  }, [])
 
   /*  useEffect( () => {
     loadFromLocalStorage();
@@ -26,7 +19,7 @@ export default function App() {
   function createHabit(habit) {
     let newHabit = {
       id: id,
-      name: habit,
+      habit: habit,
       date: new Date().toString(),
     };
     setId(id + 1);
@@ -44,6 +37,8 @@ export default function App() {
     console.log(habits);
   }
 
+
+/* 
   function onHabitSavedHandler() {
     storeInLocalStorage();
     alert("Habits saved successfully!");
@@ -55,7 +50,7 @@ export default function App() {
     setTimeout(() => {
       alert("Habits loaded from previous session!");
     }, 500);
-  }
+  } */
 
   return (
     <>
@@ -64,8 +59,8 @@ export default function App() {
         <HabitTable newHabits={habits} />
         <HabitInput
           onHabitAdded={onHabitAddedHandler}
-          onHabitSaved={onHabitSavedHandler}
-          onHabitLoaded={onHabitLoadedHandler}
+/*           onHabitSaved={onHabitSavedHandler}
+          onHabitLoaded={onHabitLoadedHandler} */
         />
       </div>
       </div>
