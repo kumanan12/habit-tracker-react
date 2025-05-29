@@ -2,11 +2,13 @@ import HabitTable from "./HabitTable";
 import HabitInput from "./HabitInput";
 import { useEffect, useState } from "react";
 
+const backendURl = import.meta.env.VITE_BACKEND_URL
+
 export default function App() {
   const [habits, setHabits] = useState([]);
 
   useEffect( () => {
-    fetch('http://localhost:7000/habits')
+    fetch(`${backendURl}/habits`)
     .then(res => res.json())
     .then(data => setHabits(data))
   }, [])
@@ -31,7 +33,7 @@ export default function App() {
 
     let newHabit = createHabit(addedHabit);
 
-        fetch('http://localhost:7000/habits', {
+        fetch(`${backendURl}/habits`, {
           method: 'POST',
           headers : { 'Content-Type': 'application/json' },
           body: JSON.stringify(newHabit)
