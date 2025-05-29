@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 export default function App() {
   const [habits, setHabits] = useState([]);
-  const [id, setId] = useState(1);
 
   useEffect( () => {
     fetch('http://localhost:7000/habits')
@@ -18,11 +17,9 @@ export default function App() {
 
   function createHabit(habit) {
     let newHabit = {
-      id: id,
       habit: habit,
       date: new Date().toString(),
     };
-    setId(id + 1);
     return newHabit;
   }
 
@@ -33,8 +30,26 @@ export default function App() {
     }
 
     let newHabit = createHabit(addedHabit);
-    setHabits((prevHabits) => [...prevHabits, newHabit]);
-    console.log(habits);
+
+        fetch('http://localhost:7000/habits', {
+          method: 'POST',
+          headers : { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newHabit)
+        })
+        .then(res => {
+          if(!res.ok){
+            throw new Error('failed to add new habit')
+          }
+          return res.json();
+
+        })
+        .then(
+          newlySentHabit => {
+            setHabits(prev => [...prev, newlySentHabit])
+          }
+        )
+          .catch(error => console.error('Fetch error:', error.message));
+
   }
 
 
