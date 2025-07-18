@@ -33,7 +33,9 @@ export default function App() {
 
     let newHabit = createHabit(addedHabit);
 
-        fetch(`${backendURl}/habits`, {
+    
+/*  Instead of this ->       fetch(`${backendURl}/habits`, {      */
+        fetch('https://api.h1bforms.com/habits', {
           method: 'POST',
           headers : { 'Content-Type': 'application/json' },
           body: JSON.stringify(newHabit)
